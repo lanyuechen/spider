@@ -6,8 +6,8 @@ import (
 	"github.com/quexer/utee"
 )
 
-const (
-	API_KEY = "0aad09394bd05dbf20071babe371193d"
+var (
+	Cfg *Config
 )
 
 /**
@@ -16,7 +16,7 @@ const (
  * GET  https://api.douban.com/v2/book/:id
  */
 func GetBookById(id string) (*Book, error) {
-	return getBook(fmt.Sprintf(`https://api.douban.com/v2/book/%s?apikey=%s`, id, API_KEY))
+	return getBook(fmt.Sprintf(`https://api.douban.com/v2/book/%s?apikey=%s`, id, Cfg.ApiKey))
 }
 
 /**
@@ -25,7 +25,8 @@ func GetBookById(id string) (*Book, error) {
  * GET  https://api.douban.com/v2/book/isbn/:name
  */
 func GetBookByIsbn(isbn string) (*Book, error) {
-	return getBook(fmt.Sprintf(`https://api.douban.com/v2/book/isbn/%s?apikey=%s`, isbn, API_KEY))
+	fmt.Println("apiKey", Cfg.ApiKey)
+	return getBook(fmt.Sprintf(`https://api.douban.com/v2/book/isbn/%s?apikey=%s`, isbn, Cfg.ApiKey))
 }
 
 /**
@@ -43,7 +44,7 @@ func SearchBook(q string, tag string, start int, count int) (*Books, error) {
 		tag,
 		start,
 		count,
-		API_KEY,
+		Cfg.ApiKey,
 	)
 	b, err := utee.HttpGet(url)
 	if err != nil {
@@ -64,7 +65,7 @@ func SearchBook(q string, tag string, start int, count int) (*Books, error) {
  * count: 取结果条数,默认20
  */
 func GetBookReviewsById(id string, start int, count int) (*Reviews, error) {
-	url := fmt.Sprintf(`https://api.douban.com/v2/book/%s/reviews?start=%d&count=%d&apikey=%s`, id, start, count, API_KEY)
+	url := fmt.Sprintf(`https://api.douban.com/v2/book/%s/reviews?start=%d&count=%d&apikey=%s`, id, start, count, Cfg.ApiKey)
 	return getBookReviews(url)
 }
 
@@ -76,7 +77,7 @@ func GetBookReviewsById(id string, start int, count int) (*Reviews, error) {
  * count: 取结果条数,默认20
  */
 func GetBookReviewsByIsbn(isbn string, start int, count int) (*Reviews, error) {
-	url := fmt.Sprintf(`https://api.douban.com/v2/book/isbn/%s/reviews?start=%d&count=%d&apikey=%s`, isbn, start, count, API_KEY)
+	url := fmt.Sprintf(`https://api.douban.com/v2/book/isbn/%s/reviews?start=%d&count=%d&apikey=%s`, isbn, start, count, Cfg.ApiKey)
 	return getBookReviews(url)
 }
 

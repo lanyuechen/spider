@@ -1,5 +1,9 @@
 package douban
 
+type Config struct {
+	ApiKey string `json:"apiKey"`
+}
+
 type Books struct {
 	Start int     `json:"start"`
 	Count int     `json:"count"`
