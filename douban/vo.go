@@ -25,7 +25,7 @@ type Book struct {
 	Author     []string `json:"author"`
 	Translator []string `json:"translator"`
 	Publisher  string   `json:"publisher"`
-	Pubdate    string   `json:"pubdate"`
+	PubDate    string   `json:"pubdate"`
 	Rating     struct {
 		Max       int    `json:"max"`
 		NumRaters int    `json:"numRaters"`
@@ -58,7 +58,7 @@ type Reviews struct {
 }
 
 type Review struct {
-	Id     int    `json:"id"`
+	Id     string `json:"id"`
 	Title  string `json:"title"`
 	Alt    string `json:"alt"`
 	Author *User  `json:"author"`
