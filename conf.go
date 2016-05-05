@@ -1,10 +1,10 @@
 package spider
 
 import (
-	"github.com/spider/amazon"
-	"github.com/spider/dangdang"
-	"github.com/spider/douban"
-	"github.com/spider/jd"
+	"github.com/lanyuechen/spider/amazon"
+	"github.com/lanyuechen/spider/dangdang"
+	"github.com/lanyuechen/spider/douban"
+	"github.com/lanyuechen/spider/jd"
 )
 
 type Config struct {
