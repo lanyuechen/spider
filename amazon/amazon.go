@@ -95,14 +95,14 @@ func GetBuyUrlByIsbn(isbn string, tp int) (*BuyUrl, error) {
 	buyUrl := &BuyUrl{
 		Isbn:  isbn,
 		Tp:    tp,
-		Url:   rebateUrl(matchAsin[1]),
+		Url:   Rebate(matchAsin[1]),
 		Price: matchPrice[1],
 	}
 
 	return buyUrl, nil
 }
 
-func rebateUrl(asin string) string {
+func Rebate(asin string) string {
 	url := fmt.Sprintf(
 		"http://www.amazon.cn/gp/product/%v/ref=as_li_qf_br_asin_il_tl?ie=UTF8&camp=536&creative=3200&creativeASIN=%v&linkCode=as2&tag=%v",
 		asin,
